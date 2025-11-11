@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTSP Kemenag Kabupaten Bangka Barat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0e5ec; /* Warna dasar untuk Neumorphism terang */
+            color: #333;
+            text-align: center;
+        }
+        .header {
+            background: linear-gradient(to bottom, #222, #000); /* Gradasi hitam */
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan disesuaikan */
+        }
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #fff; /* Warna teks menjadi putih */
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow disesuaikan */
+        }
+        .subtitle {
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #7aeb39; /* Warna teks menjadi putih */
+            margin: 5px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow disesuaikan */
+        }
+        .slogan {
+            font-size: 14px;
+            color: #ccc; /* Warna teks menjadi putih keabuan */
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Shadow disesuaikan */
+        }
+        .sublogo {
+            width: 150px; /* Ukuran disesuaikan kembali */
+            height: auto;
+            margin-top: -15px; /* Jarak disesuaikan kembali */
+        }
+        .footer {
+            background-color: #6adfcf;
+            padding: 20px;
+            font-size: 14px;
+            color: #0c0606;
+            margin-top: 40px;
+        }
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1300px; /* Sedikit dilebarkan untuk padding */
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-slide {
+            position: relative; /* Diperlukan untuk memposisikan teks overlay */
+            min-width: 100%;
+            box-sizing: border-box; /* Penting untuk padding */
+            padding: 0 10px; /* Memberikan padding kiri dan kanan */
+            cursor: pointer;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 400px; /* Menetapkan tinggi yang sama untuk semua gambar */
+            object-fit: contain; /* Memastikan seluruh gambar terlihat tanpa terpotong */
+            display: block;
+            border-radius: 10px; /* Memberi sudut yang sedikit melengkung */
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Efek bayangan pada gambar */
+            transition: transform 0.3s ease, filter 0.3s ease; /* Transisi untuk zoom dan redup */
+        }
+        .slide-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            opacity: 0; /* Sembunyikan teks secara default */
+            transition: opacity 0.3s ease;
+            pointer-events: none; /* Agar tidak mengganggu hover pada gambar */
+        }
+
+        /* Efek saat hover pada slide */
+        .carousel-slide:hover img {
+            transform: scale(1.05); /* Efek zoom */
+            filter: brightness(60%); /* Efek redup */
+        }
+        .carousel-slide:hover .slide-text {
+            opacity: 1; /* Tampilkan teks saat hover */
+        }
+
+        .carousel-prev, .carousel-next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: #333;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.3s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            z-index: 10; /* Pastikan tombol di atas gambar */
+        }
+        .carousel-prev {
+            left: 0; /* Memposisikan tombol ke pojok kiri */
+            border-radius: 0 3px 3px 0;
+        }
+        .carousel-next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .carousel-prev:hover, .carousel-next:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Footer Styles */
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin: 10px;
+        }
+        .footer-section h3 {
+            color: #008800;
+            margin-bottom: 15px;
+        }
+        .social-icons a {
+            color: #555;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #00ff00;
+        }
+        .copyright {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger-container {
+            max-width: 1300px; /* Menyamakan lebar dengan carousel */
+            margin: 20px auto;
+            padding: 0 40px; /* Menyamakan padding dengan carousel */
+            box-sizing: border-box;
+        }
+        .hamburger-button {
+            background: #e0e5ec; /* Warna sama dengan body */
+            color: #555;
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 20px; /* Sudut lebih melengkung */
+            display: flex;
+            justify-content: center; /* Teks dan ikon di tengah */
+            align-items: center;
+            width: 100%; /* Tombol selebar container */
+            transition: box-shadow 0.3s ease, color 0.3s ease;
+            /* Bayangan Neumorphic */
+            box-shadow: 9px 9px 16px #a3b1c6,
+                        -9px -9px 16px #ffffff;
+        }
+        .hamburger-button:hover {
+            color: #008800;
+        }
+        .hamburger-button.active {
+            color: #008800;
+            /* Efek tertekan (inset) */
+            box-shadow: inset 9px 9px 16px #a3b1c6,
+                        inset -9px -9px 16px #ffffff;
+        }
+        .hamburger-button i {
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        .hamburger-button.active i {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            max-height: 0; /* Menu tersembunyi secara default */
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, margin-top 0.5s ease-out, padding 0.5s ease-out;
+            background: #d1d9e6; /* Latar belakang sedikit lebih gelap */
+            margin-top: 0; /* Tidak ada margin saat tertutup */
+            /* Grid layout */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Kolom grid responsif */
+            gap: 25px; /* Jarak antar item */
+            padding: 0 25px; /* Hanya padding horizontal saat tertutup */
+            border-radius: 20px;
+            /* Bayangan dipindahkan ke state aktif */
+            box-shadow: none;
+        }
+        .menu-grid-item {
+            text-decoration: none;
+            color: #555;
+            background: #e0e5ec;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            transition: box-shadow 0.3s ease, color 0.3s ease;
+            /* Efek Neumorphic menonjol */
+            box-shadow: 9px 9px 16px #a3b1c6,
+                        -9px -9px 16px #ffffff;
+        }
+        .menu-grid-item:hover {
+            color: #008800;
+            /* Efek tertekan saat hover */
+            box-shadow: inset 9px 9px 16px #a3b1c6,
+                        inset -9px -9px 16px #ffffff;
+        }
+        .menu-grid-item i {
+            font-size: 36px;
+            color: #008800;
+            margin-bottom: 15px;
+        }
+        .menu-grid-item span {
+            line-height: 1.3;
+        }
+        .menu-grid-icon-image {
+            width: 36px; /* Menyamakan ukuran dengan ikon lain */
+            height: 36px;
+            margin-bottom: 15px; /* Menyamakan jarak dengan ikon lain */
+            border-radius: 50%; /* Membuat gambar menjadi bulat */
+        }
+
+        /* Modal Login Styles */
+        .modal {
+            visibility: hidden; /* Tersembunyi secara default */
+            opacity: 0;
+            position: fixed;
+            z-index: 1001; /* Tampil di atas segalanya */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px); /* Efek blur pada background */
+            transition: opacity 0.4s ease, visibility 0.4s ease; /* Transisi untuk fade-in */
+        }
+        .modal.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-content {
+            background: #e0e5ec;
+            margin: 10% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            transform: translateY(-50px); /* Posisi awal, sedikit di atas */
+            transition: transform 0.4s ease; /* Transisi untuk slide-down */
+        }
+        .modal.active .modal-content {
+            transform: translateY(0); /* Posisi akhir, di tengah */
+        }
+        .close-modal-btn {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .close-modal-btn:hover,
+        .close-modal-btn:focus {
+            color: #008800;
+        }
+        .modal-profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            /* Efek Neumorphic cekung untuk gambar */
+            box-shadow: inset 8px 8px 15px #a3b1c6,
+                        inset -8px -8px 15px #ffffff;
+        }
+        .modal-content h2 {
+            margin-bottom: 30px;
+            color: #555;
+        }
+        .modal-form-group input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            background: #e0e5ec;
+            border-radius: 15px;
+            font-size: 16px;
+            color: #555;
+            box-sizing: border-box;
+            /* Efek Neumorphic tertekan untuk input */
+            box-shadow: inset 8px 8px 15px #a3b1c6,
+                        inset -8px -8px 15px #ffffff;
+        }
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .modal-btn {
+            flex-basis: 48%;
+            padding: 15px;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+            box-shadow: 9px 9px 16px #a3b1c6,
+                        -9px -9px 16px #ffffff;
+        }
+        .modal-btn:active {
+            box-shadow: inset 9px 9px 16px #a3b1c6,
+                        inset -9px -9px 16px #ffffff;
+        }
+        .modal-btn-login {
+            background: #008800;
+            color: white;
+        }
+        .modal-btn-cancel {
+            background: #e0e5ec;
+            color: #555;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="logo.png" alt="Logo" class="logo"> <!-- Ganti dengan URL logo asli -->
+        <h1 class="title">Pelayanan Terpadu Satu Pintu (PTSP)</h1>
+        <h1 class="title">APLIKASI VERIFIKATOR ADMINISTRASI MASYARAKAT</h1>
+        <h2 class="subtitle">Kementerian Agama Kabupaten Bangka Barat</h2>
+        <p class="slogan">Cepat,Efisien,Ramah,Ikhlas dan Amanah.</p>
+        <img src="ceria.png" alt="Sub Logo" class="sublogo"> <!-- Ganti dengan URL logo asli -->
+    </div>
+
+    <!-- Carousel Section -->
+    <div class="carousel-container">
+        <div class="carousel-slides">
+            <div class="carousel-slide">
+                <img src="carousel1.jpg" alt="Image 1">
+                <div class="slide-text">Memberikan pelayanan dengan waktu penyelesaian yang singkat tanpa mengurangi kualitas dan ketepatan proses, sehingga masyarakat merasakan kemudahan dan kepuasan dalam setiap urusan.</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="carousel2.jpg" alt="Image 2">
+                <div class="slide-text">Mengoptimalkan sumber daya, waktu, dan prosedur agar pelayanan berjalan lancar, sederhana, dan tepat sasaran. Setiap langkah dirancang agar hasil maksimal dicapai tanpa pemborosan tenaga maupun waktu.</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="carousel3.png" alt="Image 3">
+                <div class="slide-text">Melayani masyarakat dengan tutur kata yang sopan, sikap santun, dan penuh empati. Setiap pemohon disambut dengan senyum dan perhatian sehingga tercipta suasana pelayanan yang bersahabat.</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="carousel4.png" alt="Image 4">
+                <div class="slide-text">Melaksanakan tugas dan tanggung jawab dengan hati yang tulus, tanpa pamrih, dan semata-mata untuk memberikan manfaat bagi masyarakat. Pelayanan dilakukan dengan niat baik sebagai bentuk pengabdian.</div>
+            </div>
+            <div class="carousel-slide">
+                <img src="carousel5.png" alt="Image 5">
+                <div class="slide-text">Menjalankan setiap pelayanan dengan kejujuran, tanggung jawab, dan integritas tinggi. Setiap data dan kepercayaan masyarakat dijaga dengan penuh kehati-hatian dan profesionalisme.</div>
+            </div>
+        </div>
+        <button class="carousel-prev">&#10094;</button>
+        <button class="carousel-next">&#10095;</button>
+    </div>
+
+    <!-- Hamburger Menu Section -->
+    <div class="hamburger-container">
+        <button class="hamburger-button">
+            <i class="fas fa-bars"></i> Pilih Layanan
+        </button>
+        <div class="dropdown-menu">
+            <a href="#" class="menu-grid-item" id="loginBtn">
+                <img src="https://placehold.co/50" alt="Login Icon" class="menu-grid-icon-image"><span>LOGIN</span>
+            </a>
+            <a href="#" class="menu-grid-item">
+                <i class="fas fa-users"></i><span>Subbag Tata Usaha</span>
+            </a>
+            <a href="#" class="menu-grid-item">
+                <i class="fas fa-mosque"></i><span>Bimas Islam</span>
+            </a>
+            <a href="#" class="menu-grid-item">
+                <i class="fas fa-kaaba"></i><span>Haji & Umrah</span>
+            </a>
+            <a href="#" class="menu-grid-item">
+                <i class="fas fa-school"></i><span>Pendidikan Madrasah</span>
+            </a>
+            <a href="#" class="menu-grid-item">
+                <i class="fas fa-book-open"></i><span>Pendidikan Agama Islam</span>
+            </a>
+            <a href="#" class="menu-grid-item">
+                <i class="fa-solid fa-square-poll-vertical"></i><span>Survey Kepuasan Masyarakat</span>
+            </a>
+            <a href="#" class="menu-grid-item">
+                <i class="fa-regular fa-address-book"></i><span>Layanan Janji Temu</span>
+            </a>
+            <a href="pengaturan.html" class="menu-grid-item">
+                <i class="fa-solid fa-gears"></i><span>Pengaturan Data Aplikasi</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal-btn">&times;</span>
+            <img src="https://placehold.co/100" alt="Profile" class="modal-profile-pic">
+            <h2>LOGIN</h2>
+            <div class="modal-form-group">
+                <input type="text" placeholder="Username">
+            </div>
+            <div class="modal-form-group">
+                <input type="password" placeholder="Password">
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-cancel">Cancel</button>
+                <button class="modal-btn modal-btn-login">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Alamat Kantor</h3>
+                <p>Komplek Perkantoran Terpadu Pemkab Bangka Barat, Jl. Daya Baru, Belo Laut, Kec. Muntok, Kabupaten Bangka Barat, Kepulauan Bangka Belitung 33351</p>
+            </div>
+            <div class="footer-section">
+                <h3>Media Sosial</h3>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="copyright">© 2025 Kantor Kementerian Agama Kabupaten Bangka Barat. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // JS opsional: Tambahkan interaktivitas jika diperlukan, misalnya klik menu
+        // Dropdown Menu Script
+        const hamburgerButton = document.querySelector('.hamburger-button');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        hamburgerButton.addEventListener('click', () => {
+            hamburgerButton.classList.toggle('active');
+            if (dropdownMenu.style.maxHeight) {
+                dropdownMenu.style.maxHeight = null; // Tutup menu
+                dropdownMenu.style.marginTop = '0';
+                dropdownMenu.style.padding = '0 25px';
+                dropdownMenu.style.boxShadow = 'none';
+            } else {
+                // Buka menu
+                dropdownMenu.style.marginTop = '15px';
+                dropdownMenu.style.padding = '25px';
+                dropdownMenu.style.maxHeight = dropdownMenu.scrollHeight + "px";
+                dropdownMenu.style.boxShadow = 'inset 9px 9px 16px #a3b1c6, inset -9px -9px 16px #ffffff';
+            }
+        });
+
+        // Modal Login Script
+        const modal = document.getElementById("loginModal");
+        const loginBtn = document.getElementById("loginBtn");
+        const closeBtn = document.querySelector(".close-modal-btn");
+        const cancelBtn = document.querySelector(".modal-btn-cancel");
+
+        // Buka modal saat tombol login diklik
+        loginBtn.onclick = function(e) {
+            e.preventDefault(); // Mencegah link berpindah halaman
+            modal.classList.add('active');
+        }
+
+        // Tutup modal saat tombol (x) diklik
+        closeBtn.onclick = function() {
+            modal.classList.remove('active');
+        }
+
+        // Tutup modal saat tombol Cancel diklik
+        cancelBtn.onclick = function() {
+            modal.classList.remove('active');
+        }
+
+        // Tutup modal saat klik di luar area modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Carousel Script
+        const slidesContainer = document.querySelector('.carousel-slides');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const carouselContainer = document.querySelector('.carousel-container');
+        const prevButton = document.querySelector('.carousel-prev');
+        const nextButton = document.querySelector('.carousel-next');
+
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            showSlide(currentIndex);
+        }
+
+        // Event listeners untuk tombol prev/next
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
+
+        // Otomatis bergulir dan berhenti saat hover
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval); // Hentikan pergerakan saat kursor masuk
+        });
+
+        carouselContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000); // Lanjutkan pergerakan saat kursor keluar
+        });
+
+    </script>
+</body>
+</html>

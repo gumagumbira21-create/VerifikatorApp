@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Kelengkapan Berkas Penerima Pelimpahan Nomor Porsi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .header {
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 50px; /* Placeholder for logo; ganti dengan URL logo jika ada */
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .title {
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .subtitle {
+            font-size: 12px;
+        }
+        .form-group {
+            text-align: left;
+            margin: 10px 0;
+            font-size: 12px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group input[type="text"] {
+            border: 1px solid #ccc;
+            padding: 5px;
+            width: 300px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+        table th, table td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+        table th {
+            background-color: #e0f2f1;
+        }
+        .ket input[type="checkbox"] {
+            transform: scale(1.5);
+        }
+        .ket input[type="text"] {
+            border: none;
+            width: 100%;
+            background: transparent;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: right;
+            font-size: 12px;
+        }
+
+        /* Styles for print */
+        @media print {
+            body {
+                margin: 0;
+                text-align: center;
+            }
+            .form-group input[type="text"] {
+                border: none;
+                background: transparent;
+                width: auto;
+                padding: 0;
+                font-size: 12px;
+            }
+            .ket input[type="checkbox"] {
+                transform: scale(1.2);
+            }
+            .ket input[type="text"] {
+                border: none;
+                background: transparent;
+            }
+            button {
+                display: none; /* Sembunyikan tombol print saat mencetak */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://placehold.co/50x50?text=Logo" alt="Logo" class="logo"> <!-- Ganti dengan URL logo asli jika ada -->
+        <div class="title">Chek List Kelengkapan Berkas Penerima Pelimpahan Nomor Porsi</div>
+        <div class="title">Kantor Kementerian Agama Kabupaten Bangka Barat</div>
+        <div class="subtitle">Tahun 1447 H / 2025 M</div>
+    </div>
+
+    <div class="form-group">
+        <label>NAMA JEMAAH MENINGGAL :</label>
+        <input type="text" id="namaJemaahMeninggal" placeholder="Masukkan nama">
+    </div>
+    <div class="form-group">
+        <label>NAMA PENERIMA PELIMPAHAN NO PORSI :</label>
+        <input type="text" id="namaPenerima" placeholder="Masukkan nama dan no porsi">
+    </div>
+    <div class="form-group">
+        <label>HUBUNGAN :</label>
+        <input type="text" id="hubungan" placeholder="Masukkan hubungan">
+    </div>
+    <div class="form-group">
+        <label>NO TELEPHONE :</label>
+        <input type="text" id="noTelephone" placeholder="Masukkan no telephone">
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>NO</th>
+                <th>URAIAN</th>
+                <th>KET</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Surat Permohonan Pelimpahan Nomor Porsi (Materi)</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Akta Kematian Dari Dukcapil</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Buku Nikah Jemaah Penerima Pelimpahan No Porsi</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Akta Kelahiran Penerima Pelimpahan Nomor Porsi (Anak)</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Bukti Setoran Awal/Setoran Lunas Bpih Dari Bank</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Surat Kuasa Pelimpahan No Porsi Bermaterai Mengetahui Rt, Rw, Lurah Dan Camat</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Surat Pernyataan Tanggung Jawab Mutlak Penerima Pelimpahan Nomor Porsi Jam Aah Meninggal Bermaterai</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Ktp Jemaah Haji Meninggal</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Ktp Penerima Pelimpahan Nomor Porsi</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Kartu Keluarga Jemaah Meninggal</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Kartu Keluarga Penerima Pelimpahan Nomor Porsi</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Rekening Tabungan Haji Jemaah Meninggal</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Rekening Jemaah Haji Penerima Pelimpahan Nomor Porsi (Bank)</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Akta Kelahiran Seluruh Ahli Waris</td>
+                <td class="ket"><input type="checkbox"> <input type="text" placeholder="Keterangan opsional"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        Verifikator.
+    </div>
+
+    <button onclick="window.print()">Print Form</button>
+
+    <script>
+        // JS opsional: Bisa tambahkan validasi atau fungsi lain jika diperlukan
+        // Misalnya, untuk memastikan form diisi sebelum print
+        document.querySelector('button').addEventListener('click', function() {
+            // Bisa tambah alert atau validasi di sini
+            window.print();
+        });
+    </script>
+</body>
+</html>
